@@ -6,22 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="DieMs">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link href="http://fonts.googleapis.com/css?family=Kotta+One|Cantarell:400,700" rel="stylesheet" type="text/css">
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <style>
         html {
             margin: 0;
             padding: 0;
-            font-family: "Helvetica Neue", Roboto, Arial, sans-serif;
-            color: rgb(105, 102, 102);
+            font-family: 'Open Sans', sans-serif;
+            color:yellowgreen;
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
-            background-color:#464646;
+            background-color:black;
         }
+        /* BLINKER */
+        .blink {
+            -webkit-animation: blink .75s linear infinite;
+            -moz-animation: blink .75s linear infinite;
+            -ms-animation: blink .75s linear infinite;
+            -o-animation: blink .75s linear infinite;
+            animation: blink .75s linear infinite;
+        }
+        @-webkit-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @-moz-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @-ms-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @-o-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        /* END BLINKER */
 
     </style>
     <!-- Google Analytics -->
@@ -34,6 +70,22 @@
     <!-- End Google Analytics -->
 </head>
 <body>
-  <div>masxhi</div>
+    <div id="masxhi">
+        <div>masxhi<span class="blink">:</span></div>
+        <div id="allBrowserInfo"></div>
+    </div>
+    <script>
+        document.addEventListener('click', getAllBrowserInfo);
+        document.oncontextmenu = function(event) {
+            event.preventDefault();
+            console.log("masxhi captured your right click :)")
+        };
+
+        /* Functions */
+        function getAllBrowserInfo (){
+            console.log(window.navigator.language);
+        }
+        /* End Functions */
+    </script>
 </body>
 </html>
