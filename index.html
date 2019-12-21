@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>masxhi</title>
+    <title>dermasxhi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="DieMs">
+    <meta name="author" content="dermasxhi">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <style>
@@ -12,13 +13,60 @@
             margin: 0;
             padding: 0;
             font-family: 'Open Sans', sans-serif;
-            color:yellowgreen;
+            color:steelblue;
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
             background-color:black;
         }
+        #masxhi { 
+            display: grid; 
+            grid-auto-rows: minmax(100px, auto);
+            grid-template-columns:25% 25% 25% 25%;
+        }
+        #m00 {
+            color:yellowgreen;
+        }
+
+        /*Background color*/
+        .grey01 {
+            background-color:#080808;
+        }
+        .grey02 {
+            background-color:#101010;
+        }
+        .grey03 {
+            background-color:#181818;
+        }
+        .grey04 {
+            background-color:#202020;
+        }
+        .grey05 {
+            background-color:#282828;
+        }
+        .grey06 {
+            background-color:#303030;
+        }
+        .grey07 {
+            background-color:#383838;
+        }
+        .grey08 {
+            background-color:#404040;
+        }
+        .grey09 {
+            background-color:#484848;
+        }
+        .grey10 {
+            background-color:#505050;
+        }
+        .grey11 {
+            background-color:#585858;
+        }
+        .grey12 {
+            background-color:#606060;
+        }
+
         /* BLINKER */
         .blink {
             -webkit-animation: blink .75s linear infinite;
@@ -71,21 +119,94 @@
 </head>
 <body>
     <div id="masxhi">
-        <div>masxhi<span class="blink">:</span></div>
-        <div id="allBrowserInfo"></div>
+        <div id="m00">masxhi<span class="blink">:</span></div>
+        <div id="m01" class="grey01">your browser language</div>
+        <div id="m02" class="grey02">your browser</div>
+        <div id="m03" class="grey03"></div>
+        <div id="m04" class="grey07"></div>
+        <div id="m05" class="grey06"></div>
+        <div id="m06" class="grey05"></div>
+        <div id="m07" class="grey04"></div>
+        <div id="m08" class="grey08"></div>
+        <div id="m09" class="grey09"></div>
+        <div id="m10" class="grey10"></div>
+        <div id="m11" class="grey11"></div>
+
     </div>
     <script>
-        document.addEventListener('click', getAllBrowserInfo);
+        /* EventListeners */
+        var m01 = document.querySelector("#m01");
+        var m02 = document.querySelector("#m02");
+        var m03 = document.querySelector("#m03");
+        var m04 = document.querySelector("#m04");
+        var m05 = document.querySelector("#m05");
+        var m06 = document.querySelector("#m06");
+        var m07 = document.querySelector("#m07");
+
+        m01.addEventListener('click', m01Listener);
+        m02.addEventListener('click', m02Listener);
+        /*m03.addEventListener('click', m03Listener);
+        m04.addEventListener('click', m04Listener);
+        m05.addEventListener('click', m05Listener);
+        m06.addEventListener('click', m06Listener);
+        m07.addEventListener('click', m07Listener);*/
+        
+
+        /* Listener Functions */
+        function m01Listener (){
+            console.log("click on this element.target:")
+            console.log(event.target);
+            addTextToBlock(this, window.navigator.language);
+            this.removeEventListener('click', m01Listener);
+        }
+        function m02Listener (){
+            console.log("click on this element.target:")
+            console.log(event.target);
+            addTextToBlock(this, yourBrowser());
+            this.removeEventListener('click', m02Listener);
+        }
+
+        /* Document wide functions */
         document.oncontextmenu = function(event) {
             event.preventDefault();
-            console.log("masxhi captured your right click :)")
+            console.log("c4ptur3d :] - dont't do it again!")
         };
 
-        /* Functions */
-        function getAllBrowserInfo (){
-            console.log(window.navigator.language);
+        function addTextToBlock (divId, txt) {
+            divId.innerHTML = txt;
         }
-        /* End Functions */
+
+        function yourBrowser (){
+            let sBrowser, sUsrAg = window.navigator.userAgent;
+
+            // The order matters here, and this may report false positives for unlisted browsers.
+
+            if (sUsrAg.indexOf("Firefox") > -1) {
+            sBrowser = "Mozilla Firefox";
+            // "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0"
+            } else if (sUsrAg.indexOf("Opera") > -1 || sUsrAg.indexOf("OPR") > -1) {
+            sBrowser = "Opera";
+            //"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 OPR/57.0.3098.106"
+            } else if (sUsrAg.indexOf("Trident") > -1) {
+            sBrowser = "Microsoft Internet Explorer";
+            // "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; Zoom 3.6.0; wbx 1.0.0; rv:11.0) like Gecko"
+            } else if (sUsrAg.indexOf("Edge") > -1) {
+            sBrowser = "Microsoft Edge";
+            // "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299"
+            } else if (sUsrAg.indexOf("Chrome") > -1) {
+            sBrowser = "Google Chrome or Chromium";
+            // "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/66.0.3359.181 Chrome/66.0.3359.181 Safari/537.36"
+            } else if (sUsrAg.indexOf("Safari") > -1) {
+            sBrowser = "Apple Safari";
+            // "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.0 Mobile/15E148 Safari/604.1 980x1306"
+            } else {
+            sBrowser = "unknown";
+            }
+
+            return(sBrowser);
+        }
+
     </script>
 </body>
 </html>
+
